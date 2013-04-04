@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>LAMP on Ubuntu-12.10</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+    <div class="wrapper">
+      <section>
+        <h3>LAMP on Ubuntu-12.10</h3>
+
+<p>Install LAMP on Ubuntu-12.10:</p>
+
+<pre><code>$ sudo apt-get install tasksel</code></pre>
+<pre><code>$ sudo tasksel</code></pre>
+<pre><code>$ sudo apt-get install phpmyadmin</code></pre>
+<pre><code>$ /etc/init.d/apache2 restart</code></pre>
+<pre><code>$ cd /home/mlippi</code></pre>
+<pre><code>$ mkdir www/test</code></pre>
+<pre><code>$ sudo cp /etc/apache2/sites-available/default /etc/apache2/sites-available/test</code></pre>
+<pre><code>$ ln -s /etc/apache2/sites-available/test /etc/apache2/sites-enabled/test</code></pre>
+<pre><code>$ sudo mcedit /etc/apache2/sites-available/test</code></pre>
+<pre><code>$ cd /home/mlippi</code></pre>
+<pre><code>
+  ServerName test
+  DocumentRoot /home/mlippi/www/test
+<Directory />
+  Options FollowSymLinks
+  AllowOverride All
+</Directory>
+<Directory home/mlippi/www/test/>
+  Options Indexes FollowSymLinks MultiViews
+  AllowOverride All
+  Order allow,deny
+  allow from all
+</Directory>
+</code></pre>
+<pre><code>$ sudo a2ensite test</code></pre>
+<pre><code>$ sudo a2enmod rewrite</code></pre>
+<pre><code>$ sudo mcedit /etc/hosts</code></pre>
+<pre><code>127.0.0.2 test</code></pre>
+<pre><code>$ sudo /etc/init.d/apache2 restart</code></pre>
+
+      </section>
+      
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
