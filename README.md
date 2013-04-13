@@ -1,4 +1,4 @@
-mlippi.github.com
+mlippi.github.io
 =================
 
-http://mlippi.github.com/
+http://mlippi.github.io/
